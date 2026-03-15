@@ -1,17 +1,42 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-        />
-        <title>odin-todo</title>
-    </head>
-    <body>
-        <!--<div id="app"></div>-->
-        
-        <script type="module" src="/src/main.ts"></script>
-    </body>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>odin-todo</title>
+  </head>
+  <body>
+    <div class="side-panel principal">
+      <div class="user-data">
+        <div class="prof-pic"><img src="vite.svg" alt="User profile pic"></div>
+        <h3>The fish</h3>
+        <p>th3fishmk</p>
+      </div>
+      <div class="stuff">
+        <div class="actions-panel">
+          <button type="button" class="small-button" id="newTodoButton">
+            <img src="vite.svg" alt="">
+            <p>New todo</p>
+          </button>
+          <button type="button" class="small-button">
+            <img src="vite.svg" alt="">
+            <p>Search</p>
+          </button>
+          <button type="button" class="small-button">
+            <img src="vite.svg" alt="">
+            <p>Settings</p>
+          </button>
+        </div>
+        <div class="projects-panel">
+          <h3>Projects</h3>
+          <div id="project-list">
+            <p># New project</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-section principal"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
