@@ -35,7 +35,9 @@ body {
 }
 
 .main-section {
-  /* background-color: aqua; */
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
 
 .principal {
@@ -86,6 +88,48 @@ body {
 .small-button img {
   height: 20px;
   width: 20px;
+}
+
+/* 
+ * Todo creation space
+*/
+#todo-creator,
+.text-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap: 1px;
+}
+.todos {
+  resize: none;
+  border: 0px;
+  display: flex;
+}
+.todos:focus {
+  border: none;
+  outline: none;
+}
+#todo-name {
+  border-radius: 8px 8px 0px 0px;
+  font-size: 2rem;
+  overflow: hidden;
+}
+#todo-detail {
+  border-radius: 0px 0px 8px 8px;
+  font-size: medium;
+  height: 100%;
+}
+
+.actions {
+  display: flex;
+  /* align-items: end; */
+  /* width: 100%; */
+  justify-content: end;
+}
+
+.actions :first-child {
+  margin-right: auto;
 }
 
 @media (prefers-color-scheme: light) {

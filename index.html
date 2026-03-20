@@ -36,7 +36,31 @@
         </div>
       </div>
     </div>
-    <div class="main-section principal"></div>
+    <div class="main-section principal">
+      <div id="todo-creator">
+        <div class="text-container">
+          <textarea
+            type="text"
+            placeholder="Give your todo a name"
+            id="todo-name"
+            class="todos"
+            maxlength="120"
+          ></textarea>
+          <textarea
+            class="todos"
+            type="text"
+            placeholder=""
+            id="todo-detail"
+          ></textarea>
+        </div>
+        <div class="actions">
+          <button type="button">Delete</button>
+          <label for="todo-duedate-bttn">Due date: </label>
+          <input type="date" name="due-date" id="todo-duedate-bttn">
+          <button type="button" id="todo-create-buttn">Create</button>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
