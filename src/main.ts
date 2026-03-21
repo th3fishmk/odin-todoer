@@ -1,68 +1,72 @@
 import type { Task } from "./storage/interfaces";
+import {
+  getTodosFromLocalStorage,
+  saveTodoToLocalStorage,
+} from "./storage/methods";
 import "./style.css";
-// import viteLogo from "/vite.svg";
-// import { setupCounter } from "./counter.ts";
-// import typescriptLogo from "./typescript.svg";
 
-const app_tag = document.querySelector<HTMLDivElement>("#app");
+updateTodos();
 
-if (app_tag) {
-  // 	app_tag.innerHTML = `
-  //   <div>
-  //     <a href="https://vite.dev" target="_blank">
-  //       <img src="${viteLogo}" class="logo" alt="Vite logo" />
-  //     </a>
-  //     <a href="https://www.typescriptlang.org/" target="_blank">
-  //       <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-  //     </a>
-  //     <h1>Vite + TypeScript</h1>
-  //     <div class="card">
-  //       <button id="counter" type="button"></button>
-  //     </div>
-  //     <p class="read-the-docs">
-  //       Click on the Vite and TypeScript logos to learn more
-  //     </p>
-  //   </div>
-  // `;
-}
-
-const newTodoButton = document.getElementById(
-  "newTodoButton",
+const createTodo_tag = document.getElementsByClassName(
+  "hidder",
+)[0] as HTMLDivElement;
+const triggerCreateTodo_button = document.getElementById(
+  "triggerCreateTodo_button",
 ) as HTMLButtonElement;
-const createTodoButton = document.getElementById(
-  "todo-create-buttn",
+const createTodo_button = document.getElementById(
+  "createTodo_button",
 ) as HTMLButtonElement;
 
-if (newTodoButton) {
-  newTodoButton.addEventListener("click", () => {
-    console.log("Clicked!");
+// Buttons configs
+if (triggerCreateTodo_button) {
+  triggerCreateTodo_button.addEventListener("click", () => {
+    console.log(`triggered creation process`);
+    if (createTodo_tag) {
+      console.log(`Toggling`);
+      createTodo_tag.classList.toggle("hidden");
+    }
   });
 }
-
-if (createTodoButton) {
-  createTodoButton.addEventListener("click", () => {
-    console.log("Creating new todo");
-
-
-    const title = document.getElementById('todo-name') as HTMLTextAreaElement;
-    const description = document.getElementById('todo-detail') as HTMLTextAreaElement;
+if (createTodo_button) {
+  createTodo_button.addEventListener("click", () => {
+    // Stuff to get and after clean
+    const title = document.getElementById(
+      "todoName_textarea",
+    ) as HTMLTextAreaElement;
+    const description = document.getElementById(
+      "todoDetail_textarea",
+    ) as HTMLTextAreaElement;
     const todoId = crypto.randomUUID();
 
-    if (title) {
-      console.log(`title is: ${title.value}`);
-    }
-    if (description) {
-      console.log(`TODO description: ${description.value}`);
-    }
-
-    const newTodo:Task = {
+    const newTodo: Task = {
       id: todoId,
       done: false,
       title: title.value,
-      description: description.value
-    }
-
-    console.log(newTodo);
-    
+      description: description.value,
+    };
+    saveTodoToLocalStorage(newTodo);
+    createTodo_tag.classList.toggle("hidden");
+    title.value = "";
+    description.value = "";
+    updateTodos();
   });
+}
+
+function updateTodos() {
+  const todos = getTodosFromLocalStorage();
+  const todoer_tag = document.getElementById("todoer");
+  if (todoer_tag) {
+    todoer_tag.innerHTML = "";
+    todos.forEach((todo) => {
+      console.log(todo);
+      const todo_space = document.createElement("div");
+      todo_space.innerHTML = `
+    <div id="${todo.id}" class='todoDisplay'>
+          <h2>${todo.title}</h2>
+          <p>${todo.description}</p>
+        </div>
+    `;
+      todoer_tag.appendChild(todo_space);
+    });
+  }
 }

@@ -15,7 +15,11 @@
       </div>
       <div class="stuff">
         <div class="actions-panel">
-          <button type="button" class="small-button" id="newTodoButton">
+          <button
+            type="button"
+            class="small-button"
+            id="triggerCreateTodo_button"
+          >
             <img src="vite.svg" alt="">
             <p>New todo</p>
           </button>
@@ -37,28 +41,34 @@
       </div>
     </div>
     <div class="main-section principal">
-      <div id="todo-creator">
-        <div class="text-container">
-          <textarea
-            type="text"
-            placeholder="Give your todo a name"
-            id="todo-name"
-            class="todos"
-            maxlength="120"
-          ></textarea>
-          <textarea
-            class="todos"
-            type="text"
-            placeholder=""
-            id="todo-detail"
-          ></textarea>
+      <div class="hidder hidden">
+        <div id="todo-creator" class="hidde">
+          <div class="text-container">
+            <textarea
+              type="text"
+              placeholder="Give your todo a name"
+              id="todoName_textarea"
+              class="todos"
+              maxlength="120"
+            ></textarea>
+            <textarea
+              class="todos"
+              type="text"
+              placeholder=""
+              id="todoDetail_textarea"
+            ></textarea>
+          </div>
+          <div class="actions">
+            <!-- <button type="button">Delete</button> -->
+            <div class="date">
+              <label for="todoDuedate_date">Due date: </label>
+              <input type="date" name="due-date" id="todoDuedate_date">
+            </div>
+            <button type="button" id="createTodo_button">Create</button>
+          </div>
         </div>
-        <div class="actions">
-          <button type="button">Delete</button>
-          <label for="todo-duedate-bttn">Due date: </label>
-          <input type="date" name="due-date" id="todo-duedate-bttn">
-          <button type="button" id="todo-create-buttn">Create</button>
-        </div>
+      </div>
+      <div id="todoer">
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
