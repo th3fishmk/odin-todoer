@@ -1,6 +1,8 @@
 import type { Task } from "./storage/interfaces";
 import {
+  deleteById,
   getTodosFromLocalStorage,
+  markAsComplete,
   saveTodoToLocalStorage,
 } from "./storage/methods";
 import "./style.css";
@@ -20,9 +22,9 @@ const createTodo_button = document.getElementById(
 // Buttons configs
 if (triggerCreateTodo_button) {
   triggerCreateTodo_button.addEventListener("click", () => {
-    console.log(`triggered creation process`);
+    // console.log(`triggered creation process`);
     if (createTodo_tag) {
-      console.log(`Toggling`);
+      // console.log(`Toggling`);
       createTodo_tag.classList.toggle("hidden");
     }
   });
@@ -58,15 +60,44 @@ function updateTodos() {
   if (todoer_tag) {
     todoer_tag.innerHTML = "";
     todos.forEach((todo) => {
-      console.log(todo);
+      // console.log(todo);
       const todo_space = document.createElement("div");
       todo_space.innerHTML = `
-    <div id="${todo.id}" class='todoDisplay'>
+        <div id="${todo.id.toString()}" class='todoDisplay'>
           <h2>${todo.title}</h2>
           <p>${todo.description}</p>
         </div>
     `;
+      if (todo.done) {
+        todo_space.classList.add("completed");
+      }
+      const actions = document.createElement("div");
+      actions.classList.add("actions");
+
+      // Buttons for the action div
+      const deleteButton = document.createElement("button");
+      deleteButton.id = `del-${todo.id}`;
+      deleteButton.innerHTML = "Delete";
+      deleteButton.addEventListener("click", (d) => {
+        const id = d.target as HTMLButtonElement;
+        deleteById(id.id);
+        updateTodos();
+      });
+      const completeButton = document.createElement("button");
+      completeButton.id = `done-${todo.id}`;
+      completeButton.innerHTML = todo.done === true ? "Undo" : "Done";
+      completeButton.addEventListener("click", (e) => {
+        const completed = e.target as HTMLButtonElement;
+        markAsComplete(completed.id);
+        updateTodos();
+      });
+
+      // Add all the buttons to the actions div
+      actions.appendChild(completeButton);
+      actions.appendChild(deleteButton);
+      todo_space.appendChild(actions);
       todoer_tag.appendChild(todo_space);
     });
   }
 }
+// alert("hacket");

@@ -146,6 +146,15 @@ body {
   margin: 1rem;
 }
 
+.todoDisplay + .actions {
+  display: flex;
+  gap: 5px;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
 /* Bottom stuff: This things go last */
 
 .hidden {
