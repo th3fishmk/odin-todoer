@@ -7,4 +7,3 @@ export interface Task {
   creationDate?: number;
   priority?: number;
 }
-

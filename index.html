@@ -1,15 +1,17 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="/vite.svg">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>odin-todo</title>
   </head>
   <body>
     <div class="side-panel principal">
       <div class="user-data">
-        <div class="prof-pic"><img src="vite.svg" alt="User profile pic"></div>
+        <div class="prof-pic">
+          <img src="vite.svg" alt="User profile pic" />
+        </div>
         <h3>The fish</h3>
         <p>th3fishmk</p>
       </div>
@@ -20,15 +22,15 @@
             class="small-button"
             id="triggerCreateTodo_button"
           >
-            <img src="vite.svg" alt="">
+            <img src="vite.svg" alt="" />
             <p>New todo</p>
           </button>
           <button type="button" class="small-button">
-            <img src="vite.svg" alt="">
+            <img src="vite.svg" alt="" />
             <p>Search</p>
           </button>
           <button type="button" class="small-button">
-            <img src="vite.svg" alt="">
+            <img src="vite.svg" alt="" />
             <p>Settings</p>
           </button>
         </div>
@@ -62,14 +64,13 @@
             <!-- <button type="button">Delete</button> -->
             <div class="date">
               <label for="todoDuedate_date">Due date: </label>
-              <input type="date" name="due-date" id="todoDuedate_date">
+              <input type="date" name="due-date" id="todoDuedate_date" />
             </div>
             <button type="button" id="createTodo_button">Create</button>
           </div>
         </div>
       </div>
-      <div id="todoer">
-      </div>
+      <div id="todoer"></div>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
