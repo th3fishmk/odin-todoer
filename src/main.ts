@@ -62,8 +62,9 @@ function updateTodos() {
     todos.forEach((todo) => {
       // console.log(todo);
       const todo_space = document.createElement("div");
+      todo_space.classList.add("todoContainer");
       todo_space.innerHTML = `
-        <div id="${todo.id.toString()}" class='todoDisplay'>
+        <div id="${todo.id}" class='todoDisplay'>
           <h2>${todo.title}</h2>
           <p>${todo.description}</p>
         </div>
@@ -77,7 +78,7 @@ function updateTodos() {
       // Buttons for the action div
       const deleteButton = document.createElement("button");
       deleteButton.id = `del-${todo.id}`;
-      deleteButton.innerHTML = "Delete";
+      deleteButton.innerHTML = "🗑️";
       deleteButton.addEventListener("click", (d) => {
         const id = d.target as HTMLButtonElement;
         deleteById(id.id);
@@ -85,7 +86,7 @@ function updateTodos() {
       });
       const completeButton = document.createElement("button");
       completeButton.id = `done-${todo.id}`;
-      completeButton.innerHTML = todo.done === true ? "Undo" : "Done";
+      completeButton.innerHTML = todo.done === true ? "↩️" : "✅";
       completeButton.addEventListener("click", (e) => {
         const completed = e.target as HTMLButtonElement;
         markAsComplete(completed.id);
