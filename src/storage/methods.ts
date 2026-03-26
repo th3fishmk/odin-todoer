@@ -16,8 +16,16 @@ export function saveTodoToLocalStorage(todo: Task) {
     allTodos.push(todo);
     localStorage.setItem("todos", JSON.stringify(allTodos));
   } else {
+    // Check if the todo already exist
     const localTodos = JSON.parse(todos) as Task[];
-    localTodos.push(todo);
+    const duplicate = localTodos.findIndex((e) => e.id === todo.id);
+    if (duplicate) {
+      localTodos[duplicate] = todo;
+    } else {
+      localTodos.push(todo);
+    }
+    console.log(duplicate);
+    console.log(localTodos);
     localStorage.setItem("todos", JSON.stringify(localTodos));
   }
 }

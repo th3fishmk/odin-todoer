@@ -99,12 +99,12 @@ body {
   height: 100%;
   gap: 1px;
 }
-.todos {
+.removeOutline {
   resize: none;
   border: 0px;
   display: flex;
 }
-.todos:focus {
+.removeOutline:focus {
   border: none;
   outline: none;
 }
@@ -152,6 +152,13 @@ body {
 
 .todoDisplay > * {
   margin: 1rem;
+}
+
+.todoCreationActions {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  gap: 2px;
 }
 
 .actions {
