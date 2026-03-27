@@ -1,5 +1,5 @@
-import { expect, test } from "vitest";
+import { expect, test } from 'vitest';
 
-test("do stuff", () => {
-  expect("a").equals("a");
+test('do stuff', () => {
+    expect('a').equals('a');
 });
